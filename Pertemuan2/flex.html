@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex</title>
+    <style>
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+
+      /* End Of Template */
+      nav {
+        width: 100%;
+        display: flex;
+        padding: 20px 0px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: yellowgreen;
+      }
+
+      #logo {
+        flex: 1;
+      }
+
+      #centerMenu {
+        flex: 1;
+      }
+
+      #rightMenu {
+        flex: 1;
+        gap: 5px;
+      }
+
+      #rightMenu a {
+        text-decoration: none;
+      }
+
+      #rightMenu button {
+        padding: 5px 10px;
+        background-color: transparent;
+        border: 1px solid black;
+        border-radius: 5px;
+      }
+
+      #rightMenu button:hover {
+        background-color: blueviolet;
+        color: white;
+      }
+
+      #logo,
+      #centerMenu,
+      #rightMenu {
+        display: flex;
+        justify-content: center;
+      }
+
+      main {
+        width: 100%;
+        background-color: lightblue;
+        height: 100vh;
+      }
+
+      #bioSection {
+        width: 80vw;
+        margin: 0 auto;
+        height: 50%;
+        background-color: wheat;
+      }
+
+      #formSection {
+      }
+
+      /* Utility Class */
+      .flex-column {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .flex-1 {
+        flex: 1;
+      }
+
+      .flex-2 {
+        flex: 2;
+      }
+
+      .flex-3 {
+        flex: 1;
+      }
+
+      .flex-row {
+        display: flex;
+        flex-direction: row;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div id="logo">Logo</div>
+      <div id="centerMenu">Center Menu</div>
+      <div id="rightMenu">
+        <a href="index.html"><button>Home</button></a>
+        <a href="index.html"><button>Product</button></a>
+        <a href="index.html"><button>Gallery</button></a>
+        <a href="index.html"><button>Blog</button></a>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Section Bio data -->
+      <section id="bioSection">
+        <div class="flex-row">
+          <div id="bioFoto" class="flex-1">Foto</div>
+          <div id="bioData" class="flex-column flex-3">
+            <h1>Davin</h1>
+            <p>Front EndDesigner</p>
+            <div>
+              <button>Kontak</button>
+              <button>Resume</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Form -->
+      <section id="formSection"></section>
+    </main>
+  </body>
+</html>
