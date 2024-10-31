@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Simpanan Anggota Koperasi</title>
+  </head>
+  <body>
+    <h1>Koperasi</h1>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Pinjaman</th>
+            <th>Hapus</th>
+          </tr>
+        </thead>
+        <tbody id="ListAnggota"></tbody>
+      </table>
+    </div>
+
+    <div id="totalSimpanan">Total Simpanan Seluruh Anggota: Rp0</div>
+
+    Name
+    <input type="text" name="nama" id="nama" />
+
+    Pinjaman
+    <input type="number" name="pinjaman" id="pinjaman" />
+
+    <button id="tambahAnggota" onclick="tambahAnggota()">Tambah Anggota</button>
+
+    <script>
+      var anggota = [];
+      updateListAnggota();
+
+      function tambahAnggota() {
+        let nama = document.getElementById("nama");
+        let pinjaman = document.getElementById("pinjaman");
+
+        anggota.push({
+          nama: nama.value,
+          pinjaman: pinjaman.value,
+        });
+
+        nama.value = "";
+        pinjaman.value = "";
+        updateListAnggota();
+      }
+
+      function hapus(value) {
+        anggota.splice(parseInt(value), 1);
+        updateListAnggota();
+      }
+
+      function updateListAnggota() {
+        let list = document.getElementById("ListAnggota");
+        let totalLabel = document.getElementById("totalSimpanan");
+        let tempHtml = "";
+        let total = 0;
+        let index = 0;
+        anggota.forEach((element) => {
+          tempHtml += `
+          <tr>
+            <th>${element.nama}</th>
+            <th>${element.pinjaman}</th>
+            <th><button onclick="hapus(${index})">Hapus</button></th>
+          </tr>`;
+          total += parseInt(element.pinjaman);
+          index += 1;
+        });
+        list.innerHTML = tempHtml;
+        totalLabel.innerText = " Total Simpanan Seluruh Anggota: Rp" + total;
+      }
+    </script>
+  </body>
+</html>

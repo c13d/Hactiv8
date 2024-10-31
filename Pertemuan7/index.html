@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main></main>
+
+    <button onclick="toogleImage()">Toogle</button>
+    <img
+      id="coffeeImage"
+      src="https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG"
+      alt=""
+      width="300px"
+      height="300px"
+    />
+
+    <h1 id="displayName"></h1>
+    <h1 id="displayEdu"></h1>
+    <h1 id="displayGender"></h1>
+
+    <form action="" id="submitForm">
+      <div>
+        <label for="">Name</label>
+        <input type="text" id="inputName" name="name" />
+      </div>
+
+      <div>
+        <label for="">Pendidikan</label>
+        <select name="education" id="selectEdu">
+          <option disabled="disabled" value="s"></option>
+          <option value="sd">SD</option>
+          <option value="smp">SMP</option>
+          <option value="sma">SMA</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="">Gender</label>
+        <div>
+          <div>
+            <input type="radio" name="gender" value="male" />
+            <label>Male</label>
+          </div>
+          <div>
+            <input type="radio" name="gender" value="female" />
+            <label>Female</label>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
