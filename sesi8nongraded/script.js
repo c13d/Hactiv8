@@ -18,6 +18,11 @@ function toogleForm() {
     ...document.querySelectorAll(`[data-name*="funnel-chart-percent"]`),
   ];
 
+  console.log(refs)
+
+
+  console.log(document.querySelectorAll(`[data-label]`));
+
   const namaField = document.querySelector("#nama");
   const roleField = document.querySelector("#role");
   const availabilityField = document.querySelector("#availability");
