@@ -21,7 +21,16 @@ function toogleForm() {
   console.log(refs)
 
 
-  console.log(document.querySelectorAll(`[data-label]`));
+  const labels = document.querySelectorAll(`[data-label]`)
+  const fields = document.querySelectorAll(`[name]`)
+  fields.forEach((field) => {
+    labels.forEach((label) => {
+      if(label.name == field.value) {
+        
+      }
+    })
+  })
+  
 
   const namaField = document.querySelector("#nama");
   const roleField = document.querySelector("#role");
