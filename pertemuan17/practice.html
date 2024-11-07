@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fintech Transaction Management</title>
+</head>
+<body>
+    <h1>Fintech Transaction Management</h1>
+
+    <main>
+        <div id="loginView"></div>
+
+        <div id="welcomeView"></div>
+
+        <div id="daftarTransaksi"></div>
+
+        <div id="logoutView"></div>
+    </main>
+
+    <script>
+        let listTransaction = []
+
+        function loginDidTapped() {
+            const username = document.querySelector("#username").value;
+            sessionStorage.setItem("loggedInUser", username);            
+            checkIsLoggedIn()
+        }
+
+        function checkIsLoggedIn() {
+            resetView()
+            const loggedInUser = sessionStorage.getItem("loggedInUser");
+            if (loggedInUser) {
+                document.querySelector("#welcomeView").innerHTML = `<h3>Welcome, ${loggedInUser}</h4>`;
+                document.querySelector("#daftarTransaksi").innerHTML = `
+                <h2>Daftar Transaksi</h2>
+                <ul id="listTransaksi">
+                </ul>
+
+                <div>
+                    <label for="transactionAmount">Transaction Amount</label>
+                    <input type="number" name="transactionAmount" id="transactionAmount">
+                    <button onclick="addTransaction()">Add Transaction</button>
+                </div>
+                `
+                document.querySelector("#logoutView").innerHTML = `
+                    <button onclick="logoutDidTapped()">logout</button>
+                `
+                drawTransaction()
+            } else {                
+                document.querySelector("#loginView").innerHTML = `
+                <label for="username">Enter username</label>
+                <input type="text" name="username" id="username">
+                <button onclick="loginDidTapped()">Login</button>
+                `
+            }
+        }
+
+        function addTransaction() {
+            const transactionAmountInput = document.querySelector("#transactionAmount")
+            listTransaction.push({
+                id: listTransaction.length + 1,
+                jumlah: transactionAmountInput.value,
+                status: "Pending"
+            })
+            transactionAmountInput.value = ""
+
+            localStorage.setItem("listTransaction", JSON.stringify(listTransaction))
+            drawTransaction()
+        }
+
+        function drawTransaction() {
+            listTransaction = localStorage.getItem("listTransaction") ?
+            JSON.parse(localStorage.getItem("listTransaction")) : []
+
+            let htmlList = ""
+            listTransaction.forEach((transaction) => {
+                htmlList += `<li>ID: ${transaction.id}, Jumlah: ${transaction.jumlah}, Status: ${transaction.status} </li>`
+            })
+
+            document.getElementById("listTransaksi").innerHTML = htmlList
+        }
+
+        function resetView() {
+            document.querySelector("#logoutView").innerHTML = "";
+            document.querySelector("#welcomeView").innerHTML = "";
+            document.querySelector("#daftarTransaksi").innerHTML = "";
+            document.querySelector("#loginView").innerHTML = ""
+        }
+
+        function logoutDidTapped() {
+            console.log("log out did tapped");
+            sessionStorage.removeItem("loggedInUser");
+            localStorage.removeItem("listTransaction")
+            resetView()
+            document.querySelector("#loginView").innerHTML = `
+                <label for="username">Enter username</label>
+                <input type="text" name="username" id="username">
+                <button onclick="loginDidTapped()">Login</button>
+            `;
+        }
+
+        checkIsLoggedIn();
+    </script>
+</body>
+</html>
